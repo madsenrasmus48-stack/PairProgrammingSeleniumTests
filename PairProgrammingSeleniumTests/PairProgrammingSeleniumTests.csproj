@@ -9,14 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="MSTest" Version="4.0.2" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.52.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Userstory1_Test\" />
   </ItemGroup>
 
 </Project>
