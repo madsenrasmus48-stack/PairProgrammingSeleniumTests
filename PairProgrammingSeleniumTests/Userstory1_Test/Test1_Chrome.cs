@@ -2,6 +2,7 @@ using System.Xml.Serialization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
+
 namespace PairProgrammingSeleniumTests;
 
 [TestClass]
@@ -17,6 +18,7 @@ public class US1_test1_Chrome
         driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
         
         //Act
+        Thread.Sleep(1000);
         IWebElement hentDataelement = driver.FindElement(By.Id("LoadRecords"));
         var buttonText = hentDataelement.Text;
 
@@ -24,5 +26,6 @@ public class US1_test1_Chrome
         //Assert
 
         Assert.AreEqual("Load records", buttonText);
+        driver.Quit();
     }
 }

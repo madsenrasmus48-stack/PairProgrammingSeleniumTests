@@ -15,8 +15,9 @@ public class US1_test1_Firefox
         options.AddArgument("--headless=new");
         IWebDriver driver = new FirefoxDriver(options);
         driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
-        
+
         //Act
+        Thread.Sleep(1000);
         IWebElement hentDataelement = driver.FindElement(By.Id("LoadRecords"));
         var buttonText = hentDataelement.Text;
 
@@ -24,5 +25,6 @@ public class US1_test1_Firefox
         //Assert
 
         Assert.AreEqual("Load records", buttonText);
+        driver.Quit();
     }
 }

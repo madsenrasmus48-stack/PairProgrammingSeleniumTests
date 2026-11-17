@@ -13,17 +13,20 @@ public class Test1_Chrome
     {
         ChromeOptions options = new ChromeOptions();
         options.AddArgument("--headless=new");
-        IWebDriver driver = new ChromeDriver(options);
-        driver.Navigate().GoToUrl("http://127.0.0.1:5501/PairProgrammingFrontEnd/index.html");
+        IWebDriver driver = new ChromeDriver();
+        driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
         var submitButton = driver.FindElement(By.Id("LoadRecords"));
         var titleInput = driver.FindElement(By.Id("filterTitle"));
 
+
         titleInput.SendKeys(title);
+        Thread.Sleep(1000);
         submitButton.Click();
 
         var dataList = driver.FindElements(By.ClassName("title"));
-        Assert.AreEqual(dataList.Count, 1);
+        Assert.AreEqual(1,dataList.Count);
+        driver.Quit();
 
     }
 }

@@ -10,15 +10,17 @@ public class Test2_Firefox
     {
         FirefoxOptions options = new FirefoxOptions();
         options.AddArgument("--headless=new");
-        IWebDriver driver = new FirefoxDriver(options);
+        IWebDriver driver = new FirefoxDriver();
         driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
         var submitButton = driver.FindElement(By.Id("LoadRecords"));
         
+        Thread.Sleep(1000);
         submitButton.Click();
         var dataList = driver.FindElements(By.ClassName("artist-name"));
 
 
         Assert.IsNotEmpty(dataList);
+        driver.Quit();
     }
 }

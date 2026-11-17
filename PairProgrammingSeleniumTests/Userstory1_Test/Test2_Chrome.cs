@@ -10,15 +10,17 @@ public class Test2_Chrome
     {
         ChromeOptions options = new ChromeOptions();
         options.AddArgument("--headless=new");
-        IWebDriver driver = new ChromeDriver(options);
-        driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
+        IWebDriver driver = new ChromeDriver();
         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+        driver.Navigate().GoToUrl("http://127.0.0.1:5500/index.html");
         var submitButton = driver.FindElement(By.Id("LoadRecords"));
         
         submitButton.Click();
+        Thread.Sleep(1000);
         var dataList = driver.FindElements(By.ClassName("artist-name"));
 
 
         Assert.IsNotEmpty(dataList);
+        driver.Quit();
     }
 }
